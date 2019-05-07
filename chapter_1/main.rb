@@ -80,5 +80,26 @@ def isUnique(str)
     return true 
   end 
   
-  _test = palindrome_permuatation("TactbCa")
-  puts "#{_test}"
+  def oneAway(main, str)
+    myHash = Hash.new(false)
+    edits = 0 
+    diff = (main.length - str.length).abs
+    longer_string = main.length > str.length ? main.chars : str.chars
+    shorter_string = main.length > str.length ? str.chars : main.chars
+    if diff > 1 || diff != 0 
+      return false 
+    end 
+    shorter_string.each do |i|
+      myHash[i] = true 
+    end
+    longer_string.each do |i|
+      if myHash[i] == false 
+        edits += 1
+      end 
+    end 
+  
+    if edits > 1 
+      return false 
+    end 
+    return true
+  end 
