@@ -1,0 +1,84 @@
+def isUnique(str)
+    myArray = str.downcase.chars
+    myHash = Hash.new(0)
+    myArray.each do |i|
+      myHash[i] += 1
+      if myHash[i] > 1 
+        return false 
+      end
+    end 
+    return true 
+  end 
+  
+  # implement an algorithm to determine if a string is a permuation of the other 
+  
+  def isPermutation(str1, str2)
+    if str1.delete(' ').length != str2.delete(' ').length
+      return false 
+    end 
+    array1 = str1.downcase.chars
+    array2 = str2.downcase.chars
+    myHash = Hash.new(0)
+    # loop 1 
+    array1.each do |i|
+      myHash[i] += 1
+    end
+  
+  
+   # loop 2 
+    array2.each do |j|
+      myHash[j] -= 1
+    end
+  
+  
+    # loop 3 
+    myHash.each do |_, val|
+      if val != 0
+        return false 
+      end 
+    end 
+    return true 
+  end
+  
+  
+  def urlify(url)
+    url_array = url.split(" ")
+    _new_url = ""
+    _len = url_array.length - 2
+    for i in 0.._len
+      _new_url += url_array[i] + "%20"
+    end 
+    _new_url += url_array[url_array.length - 1]
+    puts "#{_new_url}"
+  end 
+  
+  
+  def palindrome_permuatation(str)
+    arr = str.delete(" ").downcase.chars
+    myHash = Hash.new(0)
+    odd_flag = 0 
+    arr.each do |i|
+      myHash[i] += 1 
+    end 
+    if arr.length % 2 == 0 
+      myHash.each do |_ , val|
+        if val != 2 
+          return false
+        end 
+      end
+    else 
+      myHash.each do |_, val|
+        if val != 2 
+          odd_flag += 1
+        end 
+        if odd_flag > 1 
+          return false 
+        end 
+      end
+    
+    end 
+    return true 
+  end 
+  
+  _test = palindrome_permuatation("TactbCa")
+  puts "#{_test}"
