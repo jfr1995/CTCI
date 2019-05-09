@@ -86,12 +86,13 @@ def isUnique(str)
     diff = (main.length - str.length).abs
     longer_string = main.length > str.length ? main.chars : str.chars
     shorter_string = main.length > str.length ? str.chars : main.chars
-    if diff > 1 || diff != 0 
+    if diff > 1 
       return false 
     end 
     shorter_string.each do |i|
       myHash[i] = true 
     end
+    
     longer_string.each do |i|
       if myHash[i] == false 
         edits += 1
@@ -103,3 +104,22 @@ def isUnique(str)
     end 
     return true
   end 
+  
+
+
+def most_common_letter(string)
+  myHash = Hash.new(0)
+  str_array = string.chars 
+  most_common = str_array[0]
+  str_array.each do |i|
+    myHash[i] += 1
+  end 
+  #iterate hash 
+  myHash.each do |key, val|
+    if val > myHash[most_common]
+      most_common = key
+    end 
+  end
+  puts "#{most_common}"
+  return most_common
+end
