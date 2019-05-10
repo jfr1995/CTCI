@@ -123,3 +123,21 @@ def most_common_letter(string)
   puts "#{most_common}"
   return most_common
 end
+# diagnol diff of a N x N matrix 
+def diagonalDifference(arr)
+  left_to_right = 0 
+  right_to_left = 0 
+
+  length = arr.length - 1 
+  for i in 0..length 
+      left_to_right += arr[i][i]
+  end 
+  j = 0 
+  for i in length.downto(0)
+      right_to_left += arr[i][j]
+      j+= 1
+  end 
+  
+  
+  return (right_to_left - left_to_right).abs
+end
