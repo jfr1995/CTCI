@@ -167,3 +167,8 @@ def plusMinus(arr)
   puts(ar)
   return ar
 end
+
+# Complete the staircase function below.
+def staircase(n)
+  1.upto(n) { |i| puts ('#' * i).rjust(n) }
+end
