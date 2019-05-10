@@ -141,3 +141,29 @@ def diagonalDifference(arr)
   
   return (right_to_left - left_to_right).abs
 end
+
+
+
+# Complete the plusMinus function below.
+def plusMinus(arr)
+  positive = 0 
+  negative = 0 
+  zero = 0 
+  length = (arr.length ).to_f
+  
+  arr.each do |i|
+      if i > 0 
+          positive += 1 
+      elsif i < 0 
+          negative += 1 
+      else 
+          zero += 1 
+      end 
+  end 
+  ar = []
+  ar.push(positive.to_f/length)  
+  ar.push(negative.to_f/length)  
+  ar.push(zero.to_f/length)    
+  puts(ar)
+  return ar
+end
