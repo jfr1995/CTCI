@@ -172,3 +172,17 @@ end
 def staircase(n)
   1.upto(n) { |i| puts ('#' * i).rjust(n) }
 end
+
+
+
+
+def greatest_common_factor(number1, number2)
+  gcf = 1
+  smallest = number1 > number2 ? number2 : number1 
+  for i in 1..smallest
+    if (number1 % i == 0) and (number2 % i == 0)
+      gcf = i
+    end 
+  end 
+  return gcf
+end
