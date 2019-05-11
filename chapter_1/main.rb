@@ -186,3 +186,22 @@ def greatest_common_factor(number1, number2)
   end 
   return gcf
 end
+
+
+def palindrome?(string)
+  return string == string.reverse
+end
+
+def longest_palindrome(string)
+    longest = ""
+    length = string.length  - 1
+    for i in 0..length
+      for j in (i+1)..length 
+        if palindrome?(string.slice(i, j))
+          longest = string.slice(i, j)
+        end 
+      end 
+    end  
+    puts(longest)
+    return longest
+end
