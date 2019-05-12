@@ -103,109 +103,41 @@ def isUnique(str)
       return false 
     end 
     return true
-  end 
-  
-
-
-def most_common_letter(string)
-  myHash = Hash.new(0)
-  str_array = string.chars 
-  most_common = str_array[0]
-  str_array.each do |i|
-    myHash[i] += 1
-  end 
-  #iterate hash 
-  myHash.each do |key, val|
-    if val > myHash[most_common]
-      most_common = key
+  end def miniMaxSum(arr)
+    sorted_array = arr.sort 
+    max_array = sorted_array.drop(1)
+    min_array = sorted_array.slice(0, sorted_array.length - 1)
+    min = 0 
+    max = 0 
+    
+    max_array.each do |i|
+        max += i 
     end 
-  end
-  puts "#{most_common}"
-  return most_common
-end
-# diagnol diff of a N x N matrix 
-def diagonalDifference(arr)
-  left_to_right = 0 
-  right_to_left = 0 
-
-  length = arr.length - 1 
-  for i in 0..length 
-      left_to_right += arr[i][i]
-  end 
-  j = 0 
-  for i in length.downto(0)
-      right_to_left += arr[i][j]
-      j+= 1
-  end 
-  
-  
-  return (right_to_left - left_to_right).abs
-end
-
-
-
-# Complete the plusMinus function below.
-def plusMinus(arr)
-  positive = 0 
-  negative = 0 
-  zero = 0 
-  length = (arr.length ).to_f
-  
-  arr.each do |i|
-      if i > 0 
-          positive += 1 
-      elsif i < 0 
-          negative += 1 
-      else 
-          zero += 1 
-      end 
-  end 
-  ar = []
-  ar.push(positive.to_f/length)  
-  ar.push(negative.to_f/length)  
-  ar.push(zero.to_f/length)    
-  puts(ar)
-  return ar
-end
-
-# Complete the staircase function below.
-def staircase(n)
-  1.upto(n) { |i| puts ('#' * i).rjust(n) }
-end
-
-
-
-
-def greatest_common_factor(number1, number2)
-  gcf = 1
-  smallest = number1 > number2 ? number2 : number1 
-  for i in 1..smallest
-    if (number1 % i == 0) and (number2 % i == 0)
-      gcf = i
+    min_array.each do |i|
+        min += i 
     end 
+    puts("#{min} #{max}")
+end
+
+
+
+
+def miniMaxSum(arr)
+  sorted_array = arr.sort 
+  max_array = sorted_array.drop(1)
+  min_array = sorted_array.slice(0, sorted_array.length - 1)
+  min = 0 
+  max = 0 
+  
+  max_array.each do |i|
+      max += i 
   end 
-  return gcf
+  min_array.each do |i|
+      min += i 
+  end 
+  puts("#{min} #{max}")
 end
 
-def palindrome?(string)
-  return string == string.reverse
-end
 
-def longest_palindrome(string)
-    if palindrome?(string)
-      return string 
-    end 
-    longest = ""
-    length = string.length  - 1
-    for i in 0..length
-      for j in (i+1)..length 
-        test = string.slice(i, j)
-        puts("#{test.length}, #{longest.length}")
-        if ((palindrome?(test)) and (test.length > longest.length))
-          longest = string.slice(i, j)
-        end 
-      end 
-    end  
-    puts(longest)
-    return longest
-end
+  
+  
